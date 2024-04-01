@@ -23,13 +23,19 @@ export const todoSlice = createSlice({
 //id should not match with , if id matches do not add
 //filter returns true values only
         },
+        toggleTodo: (state, action) => {
+            const todo = state.todos.find(todo => todo.id === action.payload);
+            if (todo) {
+              todo.completed = !todo.completed; // Toggle completed status
+            }
+          },
     }
 })
 //we need to export todoSlice in two parts
 //exporting the functionalities
 //because we will be accessing  state through these and updating the functionalities individually
 
-export const {addTodo, removeTodo} = todoSlice.actions
+export const {addTodo, removeTodo, toggleTodo} = todoSlice.actions
 //awaring the store about the reducers
 //whatever reducer is registered inside the store the store will update from that
 

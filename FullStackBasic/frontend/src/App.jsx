@@ -5,10 +5,13 @@ import './App.css'
 
 function App() {
   const [jokes, setJokes] = useState([])
+
 useEffect(()=> {
   axios.get('/api/jokes')
-  .then((respose)=>{
-    setJokes(respose.data)
+  
+  .then((response)=>{
+    
+    setJokes(response.data)
   })
   .catch((error)=>{
     console.log(error)
@@ -18,6 +21,7 @@ useEffect(()=> {
   return (
     <>
       <h1>Chai aur full Stack</h1>
+      
       <p> Jokes: {jokes.length}</p>
       {/* {
         jokes.map((joke) => (
